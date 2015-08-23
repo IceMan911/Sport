@@ -1,7 +1,5 @@
 package team;
 
-import player.Player;
-
 /**
  *
  * @author iceman
