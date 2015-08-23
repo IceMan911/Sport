@@ -5,6 +5,8 @@
  */
 package team;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import player.Player;
 
 /**
@@ -17,21 +19,12 @@ public class Team implements ITeam {
     private Player player2;
     private int number;
 
-    public Team(int number, Player hrac1, Player hrac2) {
-        this.number = number;
-        this.player1 = hrac1;
-        this.player2 = hrac2;
-    }
-
-    @Override
-    public int setNumber() {
-        int insertNumber = 0;
-        if (this.number > 0 && this.number <= 20) {
-            insertNumber = this.number;
-        } else {
-            insertNumber = 100;
+    public Team(int number, Player playerOne, Player playerTwo) {
+        if (checkNumber(number)) {
+            this.number = number;
         }
-        return insertNumber;
+        this.player1 = playerOne;
+        this.player2 = playerTwo;
     }
 
     @Override
@@ -40,8 +33,27 @@ public class Team implements ITeam {
     }
 
     @Override
-    public int checkNumber() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getPlayer1() {
+        return this.player1.getFullName();
+    }
+
+    @Override
+    public String getPlayer2() {
+        return this.player2.getFullName();
+    }
+
+    private boolean checkNumber(int value) {
+        boolean message = false;
+        if (value > 0 && value < 20) {
+            message = true;
+        } else {
+            try {
+                throw new InterruptedException("Number must be between (0,20)");
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Team.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return message;
     }
 
 }

@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package team;
+
+import player.Player;
 
 /**
  *
@@ -13,18 +10,20 @@ public interface ITeam {
 
     /**
      *
-     * @return TODO Metoda setNumber zkontroluje jestli cislo neni nula!
+     * @return int
      */
-
-    public int setNumber();
-    
-    /**
-     * 
-     * @param TODO cumis co !!!  
-     */
-    
-    public  int checkNumber();
-
     public int getNumber();
+
+    /**
+     *
+     * @return String
+     */
+    public String getPlayer1();
+
+    /**
+     *
+     * @return String
+     */
+    public String getPlayer2();
 
 }
